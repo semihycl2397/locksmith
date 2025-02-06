@@ -247,7 +247,10 @@ ol {
 }
 
 .header__logo {
-	padding: 34px 0;
+	padding: 20px 0;
+	width: 150px; /* Genişliği ayarlayın (isteğe bağlı daha da küçültebilirsiniz) */
+    height: 100px; /* Oranları koruyarak yüksekliği otomatik ayarlar */
+    object-fit: contain; /* Görüntünün bozulmasını engeller */
 }
 
 .header__logo a {
@@ -1253,7 +1256,36 @@ ol {
 .product__item__pic img {
 	min-width: 100%;
 	border: 1px solid #f2f2f2;
+	width: 100%; /* Genişliği kartın tamamına yay */
+    height: 300px; /* Sabit yükseklik belirle */
+    object-fit: cover; /* Taşan kısımları kırparak, görüntüyü düzgün bir şekilde sığdır */
+    display: block;
 }
+.mfp-fade.mfp-bg {
+    opacity: 0;
+    transition: all 0.3s ease-out;
+}
+.mfp-fade.mfp-bg.mfp-ready {
+    opacity: 0.8;
+}
+.mfp-fade.mfp-bg.mfp-removing {
+    opacity: 0;
+}
+
+.mfp-fade.mfp-wrap .mfp-content {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease-out;
+}
+.mfp-fade.mfp-wrap.mfp-ready .mfp-content {
+    opacity: 1;
+    transform: scale(1);
+}
+.mfp-fade.mfp-wrap.mfp-removing .mfp-content {
+    opacity: 0;
+    transform: scale(0.8);
+}
+
 
 .product__item__text {
 	padding-top: 22px;
@@ -1729,102 +1761,43 @@ ol {
 }
 
 .services__page__widget__form {
-	padding: 50px 130px 50px 50px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.services__page__widget__form form input {
-	height: 45px;
-	width: 100%;
-	border: 1px solid #f2f2f2;
-	font-size: 14px;
-	color: #ffffff;
-	background: transparent;
-	padding-left: 20px;
-	margin-bottom: 15px;
+.services__info__text {
+    position: relative;
+    z-index: 2; /* Yazıyı öne çıkarır */
+    background: rgba(0, 0, 0, 0.5); /* Arka planı yarı saydam yapar */
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    color: white !important;  /* Yazının beyaz kalmasını zorunlu yapar */
+    text-align: center;
+}
+.services__info__text * {
+    color: white !important;  /* Tüm alt öğelerde beyaz yazı rengi */
+    text-shadow: none;        /* Gölge efektlerini kaldır */
 }
 
-.services__page__widget__form form input::-webkit-input-placeholder {
-	color: #ffffff;
+
+.services__page__widget__form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Hafif karartma efekti */
+    z-index: 1; /* Arka planda kalır */
 }
 
-.services__page__widget__form form input::-moz-placeholder {
-	color: #ffffff;
-}
-
-.services__page__widget__form form input:-ms-input-placeholder {
-	color: #ffffff;
-}
-
-.services__page__widget__form form input::-ms-input-placeholder {
-	color: #ffffff;
-}
-
-.services__page__widget__form form input::placeholder {
-	color: #ffffff;
-}
-
-.services__page__widget__form form .nice-select {
-	height: 45px;
-	line-height: 45px;
-	float: none;
-	border: 1px solid #f2f2f2;
-	border-radius: 0;
-	background: transparent;
-	padding-left: 20px;
-	margin-bottom: 15px;
-}
-
-.services__page__widget__form form .nice-select:after {
-	border-bottom: 1.5px solid #888888;
-	border-right: 1.5px solid #888888;
-	height: 7px;
-	right: 20px;
-	width: 7px;
-}
-
-.services__page__widget__form form .nice-select .list {
-	width: 100%;
-	margin-top: 0;
-	border-radius: 0;
-}
-
-.services__page__widget__form form .nice-select span {
-	font-size: 14px;
-	color: #ffffff;
-}
-
-.services__page__widget__form textarea {
-	height: 100px;
-	width: 100%;
-	border: 1px solid #f2f2f2;
-	font-size: 14px;
-	color: #ffffff;
-	background: transparent;
-	padding-left: 20px;
-	margin-bottom: 9px;
-	padding-top: 12px;
-	resize: none;
-}
-
-.services__page__widget__form textarea::-webkit-input-placeholder {
-	color: #ffffff;
-}
-
-.services__page__widget__form textarea::-moz-placeholder {
-	color: #ffffff;
-}
-
-.services__page__widget__form textarea:-ms-input-placeholder {
-	color: #ffffff;
-}
-
-.services__page__widget__form textarea::-ms-input-placeholder {
-	color: #ffffff;
-}
-
-.services__page__widget__form textarea::placeholder {
-	color: #ffffff;
-}
 
 .services__page__widget__text {
 	background: #f6f6f9;
